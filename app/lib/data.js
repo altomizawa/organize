@@ -18,7 +18,6 @@ const getBoxes = async (filter) => {
 
 const createBox = async ({boxCode, category, contents, photos, location}) => {
   await connectDB();
-  console.log(typeof boxCode,typeof  category,typeof  content,typeof  photos,typeof  location)
   try{
     const newBox = await Box.create({
       boxCode,

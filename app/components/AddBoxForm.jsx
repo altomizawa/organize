@@ -1,5 +1,8 @@
 import React from 'react'
 import { createBox } from '../lib/data'
+import boxPlaceholder from '@/public/src/box-placeholder.jpg'
+import { revalidatePath } from 'next/cache'
+
 
 // const handleForm = async (formData) =>{
 //   const room = formData.get('room')
@@ -10,10 +13,12 @@ async function handleForm(formData){
   'use server'
   const boxCode = formData.get('boxCode')
   const category = [formData.get('room')]
-  const contents = [formData.get('contents')]
-  const photos = formData.get('photo')
+  const contents = formData.get('contents').split(',')
+  const photos = formData.get('photo')==="" ? formData.get('photo') : boxPlaceholder
   const location = formData.get('location')
+  console.log(photos)
   await createBox({boxCode, category, contents, photos, location})
+  revalidatePath('/');
 }
 
 const AddBoxForm = () => {
