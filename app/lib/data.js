@@ -16,15 +16,16 @@ const getBoxes = async (filter) => {
   }
 }
 
-const createBox = async (item) => {
+const createBox = async ({boxCode, category, contents, photos, location}) => {
   await connectDB();
+  console.log(typeof boxCode,typeof  category,typeof  content,typeof  photos,typeof  location)
   try{
     const newBox = await Box.create({
-      boxCode: 'asdfasdf',
-      category: ['bedroom'],
-      contents: ['ursinho de pelúccia', 'naninha'],
-      photos: '',
-      location: 'Brasília'
+      boxCode,
+      category,
+      contents,
+      photos,
+      location,
     })
     if(!newBox) {
       throw new Error({message: 'Error adding box'})

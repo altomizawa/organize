@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchForm from '../components/SearchForm';
 import BoxGrid from '../components/BoxGrid';
+import AddBoxForm from '../components/AddBoxForm';
 
 const Myboxes = async ({searchParams}) => {
   return (
@@ -9,6 +10,7 @@ const Myboxes = async ({searchParams}) => {
       <div className='bg-black w-full h-[4px] my-8'></div>
       <SearchForm />
       <BoxGrid searchParams={searchParams}/>
+      <AddBoxForm />
     </div>
   )
 }
