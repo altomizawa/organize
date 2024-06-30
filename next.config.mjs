@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'i0.wp.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 't4.ftcdn.net',
+        port: '',
+      },
     ],
   },
 };

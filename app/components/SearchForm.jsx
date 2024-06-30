@@ -16,6 +16,7 @@ const SearchForm = () => {
       params.delete('query')
     }
     replace(`${pathname}?${params.toString()}`);
+    console.log(term)
   },300);
 
   const changeCategory = (term) => {
@@ -29,7 +30,7 @@ const SearchForm = () => {
     replace(`${pathname}?${params.toString()}`);
   };
 
-
+  
   return (
       <form className='w-full flex'>
         <div className='flex mr-8 mb-8'>
@@ -45,13 +46,13 @@ const SearchForm = () => {
         </div>
         <div className='w-full flex'>
           <label className='mr-4 text-nowrap' htmlFor='search'>What are you looking for?</label>
-          <input
+      <input
           className='border border-black text-black py-1 px-2 text-sm w-full h-min'
-          type='text' name='search'
-          placeholder='start typing'
-          onChange={(e)=> {searchContents(e.target.value)}}
-          defaultValue={searchParams.get('query')?.toString()}
-          />
+      type='text' name='search'
+      placeholder='start typing'
+      onChange={(e)=> {searchContents(e.target.value)}}
+      defaultValue={searchParams.get('query')?.toString()}
+       />
         </div>
     </form>
   )

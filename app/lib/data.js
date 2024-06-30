@@ -23,7 +23,7 @@ const createBox = async ({boxCode, category, contents, photos, location}) => {
       boxCode,
       category,
       contents,
-      photos,
+      photos: [photos],
       location,
     })
     if(!newBox) {

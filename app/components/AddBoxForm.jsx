@@ -2,19 +2,14 @@ import React from 'react'
 import { createBox } from '../lib/data'
 import boxPlaceholder from '@/public/src/box-placeholder.jpg'
 import { revalidatePath } from 'next/cache'
-
-
-// const handleForm = async (formData) =>{
-//   const room = formData.get('room')
-//   console.log(room)
-// }
+import ImageInput from './ImageInput'
 
 async function handleForm(formData){
   'use server'
   const boxCode = formData.get('boxCode')
   const category = [formData.get('room')]
   const contents = formData.get('contents').split(',')
-  const photos = formData.get('photo')==="" ? formData.get('photo') : boxPlaceholder
+  const photos = formData.get('photo')
   const location = formData.get('location')
   console.log(photos)
   await createBox({boxCode, category, contents, photos, location})
@@ -45,10 +40,7 @@ const AddBoxForm = () => {
           <label htmlFor="contents">Content:</label>
           <input className='border border-black px-2 w-full' name='contents' type="text" />
         </div>
-        <div>
-          <label htmlFor="photo">Photo:</label>
-          <input className='border border-black px-2 w-full' name='photo' type="text" />
-        </div>
+        <ImageInput />
         <div>
           <label htmlFor="location">Location:</label>
           <input className='border border-black px-2 w-full' name='location' type="text" />
