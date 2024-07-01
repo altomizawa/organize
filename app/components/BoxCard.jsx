@@ -9,7 +9,7 @@ const BoxCard = ({ box }) => {
 
   return (
     <div className='border border-gray-800 p-4 rounded-lg'>
-      <CldImage src={box.photos[0]} width={300} height={200} className='w-[300px] h-auto' alt={box.boxCode} />
+      <CldImage src={box.photos[0]} width={300} height={200} className='w-[300px] h-auto max-h-[200px] object-cover' alt={box.boxCode} />
       <h2 className='text-gray-600 font-bold mt-2'>Box: {box.boxCode}</h2>
       <h2 className='text-gray-600 font-bold mt-2'>Location: {box.location}</h2>
       <h2 className='text-gray-600 font-bold mt-2'>Date Added: {formattedDate}</h2>

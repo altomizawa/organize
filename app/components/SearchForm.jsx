@@ -2,7 +2,7 @@
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce';
 
-const SearchForm = () => {
+const SearchForm = ({ category }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -36,12 +36,13 @@ const SearchForm = () => {
         <div className='flex mr-8 mb-8'>
           <label className=' text-nowrap h-full mr-4' htmlFor='room'>Select a room</label>
           <select className='border border-black h-8' name='room' onChange={(e) => changeCategory(e.target.value)}>
-            <option value='bedroom'>Bedroom</option>
-            <option value='living room'>Living Room</option>
-            <option value='kitchen'>Kitchen</option>
-            <option value='bathroom'>Bathroom</option>
-            <option value='dining room'>Dining Room</option>
-            <option value='garage'>Garage</option>
+            <option value='' selected={category===''}>choose one</option>
+            <option value='bedroom' selected={category==='bedroom'}>Bedroom</option>
+            <option value='living room' selected={category==='living room'}>Living Room</option>
+            <option value='kitchen' selected={category==='kitchen'}>Kitchen</option>
+            <option value='bathroom' selected={category==='bathroom'}>Bathroom</option>
+            <option value='dining room' selected={category==='dining room'}>Dining Room</option>
+            <option value='garage' selected={category==='garage'}>Garage</option>
           </select>
         </div>
         <div className='w-full flex'>

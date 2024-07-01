@@ -1,8 +1,9 @@
-import React from 'react'
 import { createBox } from '../lib/data'
 import boxPlaceholder from '@/public/src/box-placeholder.jpg'
 import { revalidatePath } from 'next/cache'
+import { RedirectType, redirect } from 'next/navigation'
 import ImageInput from './ImageInput'
+import CancelButton from './ui/CancelButton'
 
 async function handleForm(formData){
   'use server'
@@ -11,9 +12,11 @@ async function handleForm(formData){
   const contents = formData.get('contents').split(',')
   const photos = formData.get('photo')
   const location = formData.get('location')
-  console.log(photos)
+  console.log(boxCode, category, contents)
+
   await createBox({boxCode, category, contents, photos, location})
-  revalidatePath('/');
+  revalidatePath('/')
+  redirect(`/myboxes`)
 }
 
 const AddBoxForm = () => {
@@ -45,7 +48,10 @@ const AddBoxForm = () => {
           <label htmlFor="location">Location:</label>
           <input className='border border-black px-2 w-full' name='location' type="text" />
         </div>
-        <button className='px-4 py-2 bg-blue-400 text-white font-bold mt-12'>CREATE</button>
+        <div className='w-full flex justify-center gap-8'>
+          <CancelButton />
+          <button type='submit' className='px-4 py-2 bg-blue-400 text-white font-bold mt-12'>CREATE</button>
+        </div>
       </form>
     </div>
   )

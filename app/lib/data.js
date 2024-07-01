@@ -1,3 +1,5 @@
+'use server'
+
 import Box from '@/app/models/box';
 import connectDB from '@/app/utils/database';
 import { NextResponse } from 'next/server';
@@ -23,7 +25,7 @@ const createBox = async ({boxCode, category, contents, photos, location}) => {
       boxCode,
       category,
       contents,
-      photos: [photos],
+      photos,
       location,
     })
     if(!newBox) {

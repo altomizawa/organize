@@ -1,3 +1,5 @@
+'use server'
+
 import mongoose, { Schema, model, models } from 'mongoose';
 
 const boxSchema = new Schema({

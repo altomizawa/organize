@@ -1,12 +1,14 @@
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
+import NavImage from './ui/NavImage'
 
 const Navbar = () => {
   return (
     <div className='flex items-center justify-between px-12 fixed top-0 left-0 z-10 w-screen bg-white'>
-      <Image width={96} height={96} priority={true} src="https://t4.ftcdn.net/jpg/01/91/33/91/360_F_191339183_chOk3ZX83SVQvmH1vIw1AIdTPoBHwu9P.jpg" alt="logo"/>   
+      <NavImage />
       <nav className='flex gap-12'>
         <a href='/'>ABOUT</a>
-        <a href='/uploadimage'>PRODUCTS</a>
+        <a href='/'>PRODUCTS</a>
         <a href='/myboxes'>SERVICES</a>
         <a href='/'>CONTACT</a>
       </nav>  
